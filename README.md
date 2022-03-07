@@ -1,7 +1,7 @@
 # blogServer
 
-블로그를 위한 백엔드 서버 코드 입니다.  
-This is the backend server code for the blog.  
+블로그를 위한 백엔드 소스 코드 입니다.  
+This is the backend source code for the blog.  
 
 ---
 
@@ -16,3 +16,8 @@ This is the backend server code for the blog.
 ## Usage
 
 Just Run it
+
+#### In Intellij
+1. Gradle Tab
+2. Tasks > application > bootRun > Run
+ 
