@@ -11,6 +11,16 @@ This is the backend source code for the blog.
 - WAS : built-in tomcat
 - IDE : Intellij
 
+### Library
+- spring-boot-starter-web
+- spring-boot-starter-data-jpa:2.6.4
+- mariadb-java-client:3.0.3
+- lombok
+- spring-boot-devtools
+- spring-boot-starter-test
+
+
+
 ---
 
 ## Usage
