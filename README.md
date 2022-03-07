@@ -5,7 +5,7 @@ This is the backend server code for the blog.
 
 ---
 
-### Environment
+## Environment
 - Language : Java 8
 - Framework : Spring Boot 2.6.x
 - WAS : built-in tomcat
@@ -13,8 +13,6 @@ This is the backend server code for the blog.
 
 ---
 
-### Usage
+## Usage
 
 Just Run it
-
----
