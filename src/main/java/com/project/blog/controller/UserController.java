@@ -5,9 +5,7 @@ import com.project.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/users") // /users 로 들어오는 모든 요청을 맞이한다.
