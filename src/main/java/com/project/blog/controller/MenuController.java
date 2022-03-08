@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/api/menu")
 public class MenuController {
 
     @Autowired
@@ -35,5 +35,11 @@ public class MenuController {
         return menuService.registMenu(menuEntity);
     }
 
+    // Update Menu
+    @PutMapping("/{menuId}")
+    public void modifyMenu(@PathVariable Long menuId, @RequestBody MenuEntity menuEntity) {
+        //return menuService.modifyMenu(menuId, menuEntity);
+    }
+    // Delete Menu
 
 }

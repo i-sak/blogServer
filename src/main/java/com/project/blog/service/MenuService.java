@@ -17,12 +17,23 @@ public class MenuService {
     public MenuEntity getMenuById(Long menuId) throws Exception{
         return menuRepository.findById(menuId).orElse(null);
     }
-
+    // 전체 조회
     public List<MenuEntity> getAllMenu() {
         return menuRepository.findAll();
     }
 
+    // 등록
     public MenuEntity registMenu(MenuEntity menuEntity) {
         return menuRepository.save(menuEntity);
     }
+
+    // 수정
+    /*public MenuEntity modifyMenu(Long menuId, MenuEntity menuEntity) {
+
+    }*/
+
+
+
+    // 삭제
+
 }
