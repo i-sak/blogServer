@@ -15,8 +15,7 @@ public class MenuService {
 
     // 조회 (개별)
     public MenuEntity getMenu(Long menuId) throws Exception{
-        return menuRepository.findById(menuId).orElseThrow(()->
-                new Exception());
+        return menuRepository.findById(menuId).orElse(null);
     }
 
 
