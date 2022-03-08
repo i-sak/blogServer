@@ -21,7 +21,7 @@ public class UserRepository {
         users.add(new User(400, "park"));
         users.add(new User(500, "kwon"));
         users.add(new User(600, "hong"));
-        System.out.println(users);
+        //System.out.println(users);
     }
 
     public Map<String, String> getMessage() {
