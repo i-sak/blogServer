@@ -25,10 +25,7 @@ public class MenuController {
     // Select One Menu
     @GetMapping("/{menuId}")
     public Map<String, MenuEntity> getMenuByMenuId(@PathVariable Long menuId) throws Exception {
-        MenuEntity me = menuService.getMenuById(menuId);
-        Map<String, MenuEntity> map = new HashMap<>();
-        map.put("menu",me);
-        return map;
+        return menuService.getMenuById(menuId);
     }
     // Get Menu By Level
     @GetMapping("/level/{level}")

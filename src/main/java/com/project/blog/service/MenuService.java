@@ -5,6 +5,7 @@ import com.project.blog.model.MenuEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -16,8 +17,11 @@ public class MenuService {
     private MenuRepository menuRepository;
 
     // 조회 ( 1개 )
-    public MenuEntity getMenuById(Long menuId) throws Exception{
-        return menuRepository.findById(menuId).orElse(null);
+    public Map<String, MenuEntity> getMenuById(Long menuId) throws Exception{
+        MenuEntity menuEntity = menuRepository.findById(menuId).orElse(null);
+        Map<String, MenuEntity> map = new HashMap<>();
+        map.put("menu",menuEntity);
+        return map;
     }
     // 전체 조회
     public List<MenuEntity> getAllMenu() {
