@@ -31,10 +31,10 @@ public class MenuController {
         return map;
     }
     // Get Menu By Level
-    /*@GetMapping("/level/{level}")
+    @GetMapping("/level/{level}")
     public List<MenuEntity> getMenuByLevel(@PathVariable int level) {
-        menuService.getMenuByLevel(level);
-    }*/
+        return menuService.getMenuByLevel(level);
+    }
 
     // Insert Menu added
     @PostMapping("")

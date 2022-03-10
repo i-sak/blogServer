@@ -33,13 +33,20 @@ public class MenuServiceTest {
         });
     }
 
-    @Test
+    //@Test
     public void selectAll() {
         menuRepository.findAll().forEach(menuEntity -> {
             System.out.println(menuEntity.toString());
         });
     }
 
+    // 특정한 값들 불러오기
+    @Test
+    public  void selectByLevel() {
+        menuRepository.findByLevel(1).forEach(menuEntity -> {
+            System.out.println(menuEntity);
+        });
+    }
 
 
 }

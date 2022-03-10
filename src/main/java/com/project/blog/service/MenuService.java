@@ -25,9 +25,9 @@ public class MenuService {
     }
 
     // 특정 레벨 계층의 메뉴 조회
-    /*public List<MenuEntity> getMenuByLevel(int level) {
-
-    }*/
+    public List<MenuEntity> getMenuByLevel(int level) {
+        return menuRepository.findByLevel(level);
+    }
 
     // 등록
     public MenuEntity registMenu(MenuEntity menuEntity) {
