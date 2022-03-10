@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class MenuService {
@@ -28,12 +30,25 @@ public class MenuService {
     }
 
     // 수정
-    /*public MenuEntity modifyMenu(Long menuId, MenuEntity menuEntity) {
-
-    }*/
-
-
+    public Optional<MenuEntity>  modifyMenu(Long menuId, MenuEntity menuEntity) {
+        Optional<MenuEntity> menu = menuRepository.findById(menuId);
+        menu.ifPresent(selectMenu -> {
+            selectMenu.setName(menuEntity.getName());
+            selectMenu.setParentMenuId(menuEntity.getParentMenuId());
+            selectMenu.setLevel(menuEntity.getLevel());
+            menuRepository.save(selectMenu);
+        });
+        return menu;
+    }
 
     // 삭제
+    public void removeMenu(long menuId) {
+        Optional<MenuEntity> menu = menuRepository.findById(menuId);
+        // 존재하는 경우 람다의 setter를 수행
+        menu.ifPresent(selectMenu ->{
+            menuRepository.delete(selectMenu);
+        });
+    }
+
 
 }

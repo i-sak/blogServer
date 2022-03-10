@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/menu")
@@ -37,9 +38,13 @@ public class MenuController {
 
     // Update Menu
     @PutMapping("/{menuId}")
-    public void modifyMenu(@PathVariable Long menuId, @RequestBody MenuEntity menuEntity) {
-        //return menuService.modifyMenu(menuId, menuEntity);
+    public Optional<MenuEntity> modifyMenu(@PathVariable Long menuId, @RequestBody MenuEntity menuEntity) {
+        return menuService.modifyMenu(menuId, menuEntity);
     }
     // Delete Menu
+    @DeleteMapping("/{menuId}")
+    public void removeMenu(@PathVariable("menuId") long menuId) {
+        menuService.removeMenu(menuId);
+    }
 
 }
