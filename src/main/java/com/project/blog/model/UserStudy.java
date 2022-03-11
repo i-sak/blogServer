@@ -1,10 +1,10 @@
 package com.project.blog.model;
 
-public class User {
+public class UserStudy {
     private Integer userid;
     private String username;
 
-    public User(Integer userid, String username) {
+    public UserStudy(Integer userid, String username) {
         this.userid = userid;
         this.username = username;
     }

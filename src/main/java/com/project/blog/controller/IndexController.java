@@ -20,8 +20,7 @@ public class IndexController {  // 요청을 제일 먼저 맞이하는 것이 C
     //@RequestMapping(value="/", method = RequestMethod.GET)
     //@ResponseBody
     @GetMapping("")
-    public Map<String, String> index() { // home
-        Map<String, String> res = this.userService.getMessage();
-        return res;
+    public String index() { // home
+        return "hello world";
     }
 }

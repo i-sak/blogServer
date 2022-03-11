@@ -1,43 +1,63 @@
 package com.project.blog.service;
 
 import com.project.blog.dao.UserRepository;
-import com.project.blog.model.User;
+import com.project.blog.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepository usersRepository;
 
-    public Map<String, String> getMessage() {
-        Map<String, String> map = userRepository.getMessage();
+    // getUserById
+    public Map<String, UserEntity> getUserById(Long userId) {
+        UserEntity userEntity = usersRepository.findById(userId).orElse(null);
+        Map<String, UserEntity> map = new HashMap<>();
+        map.put("user", userEntity);
         return map;
     }
 
-    public List<User> getUsers() {
-        return userRepository.getUsers();
+    // selectAll User
+    public List<UserEntity> getAllUsers() {
+        return usersRepository.findAll();
     }
 
-    public User getUserByUserId(Integer userid) {
-        return userRepository.getUserByUserId(userid);
+    // select User by Role
+    public List<UserEntity> getUserByRole(String role) {
+        return usersRepository.findByRole(role);
     }
 
-
-    public User registUser(User user) {
-        return userRepository.registUser(user);
+    // insert User
+    public UserEntity registUser(UserEntity userEntity) {
+        return usersRepository.save(userEntity);
     }
 
-    public void modifyUser(User user) {
-        userRepository.modifyUser(user);
+    // update User : 유저 정보 수정(update)
+    public Optional<UserEntity> modifyUser(Long userId, UserEntity userEntity) {
+        Optional<UserEntity> user = usersRepository.findById(userId);
+        user.ifPresent(selectUser -> {
+            selectUser.setName(userEntity.getName());
+            selectUser.setEmail(userEntity.getEmail());
+            selectUser.setPassword(userEntity.getPassword());
+            selectUser.setRole(userEntity.getRole());
+            usersRepository.save(selectUser);
+        });
+        return user;
+    }
+    // delete User
+    public void deleteUser(long userId) {
+        Optional<UserEntity> user = usersRepository.findById(userId);
+        user.ifPresent(selectUser -> {
+            usersRepository.delete(selectUser);
+        });
+        //usersRepository.deleteById(userId);
     }
 
-    public void removeUser(Integer userid) {
-        userRepository.removeUser(userid);
-    }
 }

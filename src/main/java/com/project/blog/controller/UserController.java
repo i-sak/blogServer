@@ -1,45 +1,58 @@
 package com.project.blog.controller;
 
-import com.project.blog.model.User;
+import com.project.blog.model.UserEntity;
 import com.project.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/users") // /users 로 들어오는 모든 요청을 맞이한다.
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserService usersService;
 
+    // getUserById
+    @GetMapping("/{userId}")
+    public Map<String, UserEntity> getUserByid(@PathVariable Long userId) {
+        return usersService.getUserById(userId);
+    }
+
+    // selectAll Users
     @GetMapping("")
-    public List<User> getAllUsers() {
-        return userService.getUsers();
+    public List<UserEntity> getAllUsers() {
+        return usersService.getAllUsers();
     }
 
-    @GetMapping("/{userid}") // 변수명이 같은 경우, @PathVariable 뒤의 변수를 제거할 수 있음
-    public User getUserByUserId(@PathVariable("userid") Integer userid) {
-        return userService.getUserByUserId(userid);
+    // select User by Role
+    @GetMapping("/role/{role}")
+    public List<UserEntity> getUserByRole(@PathVariable String role) {
+        return usersService.getUserByRole(role);
     }
 
+    // insert User
     @PostMapping("")
-    public User registUser(@RequestBody User user) {
-        System.out.println(user);
-        return userService.registUser(user);
+    public UserEntity registUser(@RequestBody UserEntity userEntity) {
+        return usersService.registUser(userEntity);
     }
 
-    @PutMapping("/{userid}") // 수정할 키, 수정할 내용은 request 본문에 넣는다.
-    public void modifyUser(
-            @PathVariable("userid") Integer userid,
-            @RequestBody User user) {
-        userService.modifyUser(user);
+    // update User
+    @PutMapping("/{userId}")
+    public Optional<UserEntity> modifyUser(@PathVariable Long userId, @RequestBody UserEntity userEntity) {
+        return usersService.modifyUser(userId, userEntity);
     }
 
-    @DeleteMapping("/{userid}")
-    public void removeUser(@PathVariable Integer userid) {
-        userService.removeUser(userid);
+    // delete User
+    @DeleteMapping("/{userId}")
+    public void deleteUser(@PathVariable long userId){
+        usersService.deleteUser(userId);
     }
+
+
+
 
 }
