@@ -21,6 +21,8 @@ public class IndexController {  // 요청을 제일 먼저 맞이하는 것이 C
     //@ResponseBody
     @GetMapping("")
     public String index() { // home
-        return "hello world";
+        return "hello world. Isaac Blog API Server";
     }
+
+
 }
