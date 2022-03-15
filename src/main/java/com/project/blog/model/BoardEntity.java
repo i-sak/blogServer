@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name="board")
 @Getter
 @NoArgsConstructor
 public class BoardEntity extends CommonDateEntity {
