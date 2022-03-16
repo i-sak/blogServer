@@ -21,4 +21,10 @@ public class UserStudyRepositoryTests {
         assertTrue(userStudyList.size() > 0);
     }
 
+    @Test
+    public void testGetUserByUserId() {
+        UserStudy user = userStudyRepository.getUserByUserId(100);
+        assertNotNull(user);
+    }
+
 }
