@@ -17,7 +17,9 @@ public class UserStudyRepositoryTests {
 
     @Test
     public void testGetUsers() {
+        // 이 메소드가 정상적인지를 판단한다.
         List<UserStudy> userStudyList = userStudyRepository.getUsers();
+        // 단정 메서드로 확인
         assertTrue(userStudyList.size() > 0);
     }
 
