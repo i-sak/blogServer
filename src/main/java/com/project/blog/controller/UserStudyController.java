@@ -1,5 +1,6 @@
 package com.project.blog.controller;
 
+import com.project.blog.annotation.TokenRequired;
 import com.project.blog.model.UserStudy;
 import com.project.blog.service.UserStudyService;
 import org.springframework.beans.factory.annotation.Autowired;

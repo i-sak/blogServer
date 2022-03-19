@@ -1,5 +1,6 @@
 package com.project.blog.controller;
 
+import com.project.blog.annotation.TokenRequired;
 import com.project.blog.service.SecurityService;
 import com.project.blog.service.SecurityServiceImpl;
 import com.project.blog.service.UserService;
@@ -23,6 +24,7 @@ public class IndexController {  // 요청을 제일 먼저 맞이하는 것이 C
     //@RequestMapping(value="/", method = RequestMethod.GET)
     //@ResponseBody
     @GetMapping("")
+    @TokenRequired
     public String index() { // home
         return "hello world. Isaac Blog API Server";
     }
