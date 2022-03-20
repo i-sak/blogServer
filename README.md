@@ -18,8 +18,9 @@ This is the backend source code for the blog.
 - lombok
 - spring-boot-devtools
 - spring-boot-starter-test
-- jaxb-api:2.3.1
-- jjwt:0.9.1
+- jaxb-api:2.3.1 (jwt)
+- jjwt:0.9.1 (jwt)
+- spring-boot-starter-aop:2.6.4
 
 
 ---
