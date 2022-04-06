@@ -1,7 +1,10 @@
 package com.project.blog.controller;
 
+import com.project.blog.annotation.TokenRequired;
 import com.project.blog.model.UserStudy;
 import com.project.blog.service.UserStudyService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +13,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/users") // /users 로 들어오는 모든 요청을 맞이한다.
 public class UserStudyController {
+
+    private static final Logger logger =
+            LoggerFactory.getLogger(UserStudyController.class);
 
     @Autowired
     private UserStudyService userStudyService;
@@ -21,6 +27,7 @@ public class UserStudyController {
 
     @GetMapping("/{userid}") // 변수명이 같은 경우, @PathVariable 뒤의 변수를 제거할 수 있음
     public UserStudy getUserByUserId(@PathVariable("userid") Integer userid) {
+        logger.debug("" + userid);
         return userStudyService.getUserByUserId(userid);
     }
 
