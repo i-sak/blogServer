@@ -14,11 +14,13 @@ import java.io.Serializable;
 @ToString
 public class UserEntity implements Serializable {
 
-    @Id
+    @Id // Auto_increment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    private Long id;            // 고유값,
+    @Column(name = "userId", unique = true)
+    private String userId;      //
     @Column(name = "name")
-    private String name;
+    private String name;        // 이름
     private String password;
     private String email;
     @Enumerated(EnumType.STRING)
